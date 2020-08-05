@@ -1,12 +1,17 @@
-export class User{
-    public readonly id: string;
+import { uuid } from "uuidv4";
 
-    public name: string;
-    public email: string;
-    public password: string;
+export class User {
+  public readonly id: string;
 
-    constructor(props: Omit<User, 'id'>, id?:string){
-        
+  public name: string;
+  public email: string;
+  public password: string;
 
+  constructor(props: Omit<User, "id">, id?: string) {
+    Object.assign(this, props);
+
+    if (!id) {
+      this.id = uuid();
     }
+  }
 }
